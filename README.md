@@ -120,6 +120,82 @@ When the AI detects a disruption, it immediately notifies the rider that their i
 7.  **Layer 7 — Physical Proof (High Risk)**: Requires a timestamped photo or scanning a location QR/NFC code for suspicious claims.
 8.  **Layer 8 — AI Behavioral Tracking**: Analyzes speed, route consistency, stop times, and frequency of claims to detect sophisticated spoofing rings.
 
+## Market Crash Resilience – Advanced Anti-Spoofing & Fraud Intelligence System
+The Phase 1 market crash exposed a critical vulnerability in parametric insurance systems — GPS spoofing and coordinated false-claim attacks. To address this, our platform implements a multi-dimensional fraud intelligence engine that evaluates claims using spatial, behavioral, temporal, and device-level signals rather than relying on a single source of truth.
+
+### 1. Multi-Source Location Consensus Engine
+Instead of trusting raw GPS, we construct a **location confidence score** using:
+* GPS coordinates
+* IP-based geolocation
+* Wi-Fi and cell tower triangulation
+* Device motion sensors
+
+A claim is only considered valid if all signals converge within an acceptable spatial deviation threshold. Large inconsistencies trigger automatic rejection.
+
+### 2. Spatio-Temporal Validation Model
+We model realistic movement constraints:
+* Maximum human travel speed thresholds
+* Route continuity validation
+* Time-based feasibility checks
+
+This prevents impossible jumps (e.g., 10 km in 2 minutes), a common GPS spoofing pattern.
+
+### 3. Behavioral Anomaly Detection (User Profiling)
+We maintain a dynamic behavioral profile per user:
+* Typical working hours
+* Average daily activity
+* Claim frequency patterns
+
+Using anomaly scoring, we detect:
+* Users who log in only during disruption events
+* Sudden spikes in claims
+* Deviation from historical work patterns
+
+### 4. Cross-Trigger Correlation Engine
+We validate claims against external signals:
+* Weather APIs (rain, AQI, temperature)
+* Zone-specific disruption data
+* Platform activity data
+
+A claim is approved only when **environmental triggers + user presence + activity signals** align.
+
+### 5. Device Trust & Integrity Layer
+We assign a **device trust score** based on:
+* Root/jailbreak detection
+* Mock location app detection
+* Emulator usage detection
+
+Low-trust devices undergo stricter validation or secondary verification.
+
+### 6. Coordinated Fraud Detection (Graph-Based)
+We detect fraud rings using relationship modeling:
+* Multiple users claiming in identical patterns
+* Shared device/network signatures
+* Synchronized claim timings
+
+Suspicious clusters are flagged using graph-based anomaly detection.
+
+### 7. Adaptive Risk Scoring Engine
+Each claim is assigned a **Fraud Risk Score**:
+`Fraud Score = f(location_consistency, behavior_deviation, device_trust, activity_signal)`
+
+* **Low score** → instant payout
+* **Medium score** → delayed verification
+* **High score** → blocked + flagged
+
+### 8. Self-Learning Feedback Loop
+The system continuously improves:
+* Rejected claims feed into model training
+* Fraud patterns update detection thresholds
+* Risk scoring adapts per city and user segment
+
+---
+
+### Outcome
+This architecture transforms the system from a rule-based validator into an **adaptive fraud intelligence platform**. By combining multi-source verification, behavioral analytics, and risk scoring, the system is resilient against GPS spoofing, synthetic claims, and coordinated fraud attacks.
+
+This directly addresses the market crash scenario and ensures secure, scalable, and trustworthy claim processing.
+
 ## Challenges we ran into
 -   Building adaptive thresholds that adjust per city and season.
 -   Designing strict but fair fraud detection.
